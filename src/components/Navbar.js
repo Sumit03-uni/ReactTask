@@ -2,11 +2,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ cartCount }) => {
     const navigate = useNavigate();
     const auth = sessionStorage.getItem('auth');
     const email = sessionStorage.getItem('email');
-    const cartCount = JSON.parse(localStorage.getItem('cart'))?.length || 0;
 
     const handleLogout = () => {
         sessionStorage.removeItem('auth');

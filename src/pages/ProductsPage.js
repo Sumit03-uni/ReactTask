@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const ProductPage = () => {
+const ProductPage = ({ updateCartCount }) => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState(
         () => JSON.parse(localStorage.getItem("cart")) || []
@@ -17,6 +17,7 @@ const ProductPage = () => {
         const updatedCart = [...cart, { ...product, quantity: 1 }];
         setCart(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
+        updateCartCount(updatedCart.length);
     };
 
     const updateQuantity = (index, quantity) => {
@@ -27,11 +28,13 @@ const ProductPage = () => {
             .filter((item) => item.quantity > 0);
         setCart(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
+        updateCartCount(updatedCart.length);
     };
 
     const emptyCart = () => {
         setCart([]);
         localStorage.removeItem("cart");
+        updateCartCount(0);
     };
 
     const totalPrice = cart.reduce(
@@ -61,7 +64,7 @@ const ProductPage = () => {
                 <div className="cart-page">
                     {cart.map((item, index) => (
                         <div key={index} className="cart-info">
-                            <p>{item.title.slice(0,15)}</p>
+                            <p>{item.title.slice(0, 15)}</p>
                             <p>${item.price}</p>
                             Quantity:&nbsp; <button onClick={() => updateQuantity(index, 1)}>+</button>
                             {item.quantity}
