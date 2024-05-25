@@ -25,7 +25,7 @@ const Navbar = ({ cartCount }) => {
             <nav>
                 <h2>ShopPing</h2>
                 <ul>
-                    <li>Welcome To ShopPing Clone App</li>
+                    {!auth ? <li>Welcome To ShopPing Clone App</li>: null }
                     {auth && <li>Welcome, {email}</li>}
                     {auth ? <li onClick={handleProduct}>Products</li> : null}
                     {auth ? <li onClick={handleCart}>Cart ({cartCount})</li> : null} 
