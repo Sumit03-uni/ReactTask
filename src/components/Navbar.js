@@ -12,13 +12,23 @@ const Navbar = ({ cartCount }) => {
         sessionStorage.removeItem('email');
         navigate('/login');
     };
+    const handleProduct = () => {
+        navigate('/products');
+    }
+
+    const handleCart = () => {
+        navigate('/cart');
+    }
 
     return (
         <div>
             <nav>
+                <h2>ShopPing</h2>
                 <ul>
+                    <li>Welcome To ShopPing Clone App</li>
                     {auth && <li>Welcome, {email}</li>}
-                    <li>Cart ({cartCount})</li>
+                    {auth ? <li onClick={handleProduct}>Products</li> : null}
+                    {auth ? <li onClick={handleCart}>Cart ({cartCount})</li> : null} 
                     {auth ? <li onClick={handleLogout}>Logout</li> : null}
                 </ul>
             </nav>
