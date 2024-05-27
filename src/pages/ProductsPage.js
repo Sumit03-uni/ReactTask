@@ -1,19 +1,28 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProductPage = ({ products, addToCart, totalPrice }) => {
+const ProductPage = ({ products, handleAddToCartClick, cart, totalPrice }) => {
+    const navigate = useNavigate();
+
+    const handleAddToCartAndNavigate = (product) => {
+        handleAddToCartClick(product);
+        navigate('/cart');
+      };
 
     return (
-        <div className="product-containor">
+        <div>
             <h1>Products</h1>
-            <div className="maincontainor">
-                <div className="chlidren">
+            <div className="containors">
+                <div className="children">
                     {products.map((product) => (
                         <div key={product.id} className="product">
                             <img src={product.image} alt={product.name} />
-                            <h5>{product.title.slice(0, 20)}</h5>
-                            <p>{product.description.slice(0, 39)}</p>
+                            <h5>{product.title.slice(0, 15)}</h5>
+                            <p>{product.description.slice(0, 30)}</p>
                             <p>${product.price}</p>
-                            <button onClick={() => addToCart(product)}>Add to Cart</button>
+                            <button onClick={() => handleAddToCartAndNavigate(product)}>
+                                {cart.find(item => item.id === product.id) ? 'Go to Cart' : 'Add to Cart'}
+                            </button>
                         </div>
                     ))};
                 </div>

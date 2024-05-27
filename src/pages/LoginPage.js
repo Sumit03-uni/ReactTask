@@ -31,16 +31,37 @@ const LoginPage = () => {
   };
 
   return (
-    <div className='login-form'>
-      <h3>ShopPing Clone</h3>
-
-    <form onSubmit={handleLogin}>
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-      <button type="submit">Login</button>
-      {error && <p>{error}</p>}
-    </form>
+    <div className="auth-form-container">
+      <form className="auth-form" onSubmit={handleLogin}>
+        <div className="auth-form-content">
+          <h3 className="auth-form-title">Sign In</h3>
+          <div className="form-group mt-3">
+            <label>Email address</label>
+            <input type="email" className="form-control mt-1" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" required />
+          </div>
+          <div className="form-group mt-3">
+            <label>Password</label> 
+            <input type="password" className="form-control mt-1" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" required/>
+          </div>
+          <div className="d-grid gap-2 mt-3">
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </div>
+          <p className="forgot-password text-right mt-2">
+            Forgot <a href="#">password?</a>
+          </p>
+        </div>
+      </form>
     </div>
+    // <div className='login-form'>
+    //   <h3>ShopPing Clone</h3>
+
+    // <form onSubmit={handleLogin}>
+    //   <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+    //   <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+    //   <button type="submit">Login</button>
+    //   {error && <p>{error}</p>}
+    // </form>
+    // </div>
   );
 };
 

@@ -5,13 +5,13 @@ const CartPage = ({ cart, updateQuantity, totalPrice, emptyCart }) => {
     return (
         <div>
             <h2>Cart</h2>
-            <div className="maincontainor">
-                <div className="chlidren">
+            <div className="containors">
+                <div className="children">
                     {cart.map((item, index) => (
-                        <div key={index} className="product">
+                        <div key={index} className="carts">
                             <img src={item.image} alt={item.title} />
-                            <h5>{item.title.slice(0,20)}</h5>
-                            <p>{item.description.slice(0, 50)}</p>
+                            <h5>{item.title.slice(0,15)}</h5>
+                            <p>{item.description.slice(0, 40)}</p>
                             <p>${item.price}</p>
                             <div className="quantity-control">
                                 <b>Quantity:</b> &nbsp; <button onClick={() => updateQuantity(index, 1)}>+</button>
