@@ -38,7 +38,7 @@ const LoginPage = () => {
           <div className="form-group mt-3">
             <label>Email address</label>
             <input type="email" className="form-control mt-1" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" required />
-          </div>
+         </div>
           <div className="form-group mt-3">
             <label>Password</label> 
             <input type="password" className="form-control mt-1" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" required/>
@@ -51,17 +51,7 @@ const LoginPage = () => {
           </p>
         </div>
       </form>
-    </div>
-    // <div className='login-form'>
-    //   <h3>ShopPing Clone</h3>
-
-    // <form onSubmit={handleLogin}>
-    //   <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-    //   <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-    //   <button type="submit">Login</button>
-    //   {error && <p>{error}</p>}
-    // </form>
-    // </div>
+    </div>  
   );
 };
 
